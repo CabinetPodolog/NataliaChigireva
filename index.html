@@ -162,6 +162,19 @@ ul{list-style:none}
 .cta__form button[data-messenger="max"]:hover{filter:brightness(.92);transform:translateY(-1px)}
 .cta__form-note{font-size:11px;color:#aaa;text-align:center;margin-top:12px;line-height:1.4}
 
+/* MAP IN CTA */
+.cta-map{display:grid;grid-template-columns:3fr 2fr;gap:24px;margin-top:32px;background:#262626;border-radius:var(--radius);overflow:hidden}
+.cta-map__frame{position:relative;min-height:320px}
+.cta-map__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.cta-map__info{padding:28px 28px 28px 4px;display:flex;flex-direction:column;gap:6px;color:#fff}
+.cta-map__label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-light)}
+.cta-map__addr{font-size:20px;font-weight:800;line-height:1.3}
+.cta-map__district{font-size:14px;color:#bbb;margin-bottom:8px}
+.cta-map__list{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#ddd;margin-bottom:16px}
+.cta-map__btn{align-self:flex-start;background:var(--gold);color:#fff;padding:12px 22px;border-radius:12px;font-size:15px;font-weight:600;min-height:var(--tap);display:inline-flex;align-items:center;transition:background .2s}
+.cta-map__btn:hover{background:#a07e4f}
+@media(max-width:768px){.cta-map{grid-template-columns:1fr;gap:0}.cta-map__frame{min-height:260px}.cta-map__info{padding:20px}.cta-map__addr{font-size:18px}.cta-map__btn{align-self:stretch;justify-content:center}}
+
 /* FOOTER */
 .footer{background:var(--dark);color:#ccc;padding:48px 0 24px;margin-top:60px}
 .footer__inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
@@ -807,6 +820,22 @@ ul{list-style:none}
 <p class="cta__form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
 </form>
 </div>
+<div class="cta-map">
+  <div class="cta-map__frame">
+    <iframe src="https://yandex.ru/map-widget/v1/?ll=82.916333%2C55.036943&amp;z=16&amp;pt=82.916333%2C55.036943%2Cpm2rdm" title="Кабинет на карте: Новосибирск, ул. Фрунзе, 5/2" loading="lazy" allowfullscreen></iframe>
+  </div>
+  <div class="cta-map__info">
+    <p class="cta-map__label">Как нас найти</p>
+    <p class="cta-map__addr">Новосибирск, ул. Фрунзе, 5/2, каб. 9</p>
+    <p class="cta-map__district">Центральный район, центр города</p>
+    <ul class="cta-map__list">
+      <li>🚇 7 минут пешком от метро «Красный проспект»</li>
+      <li>🏢 2 этаж, домофон 209</li>
+      <li>🕗 Ежедневно 8:00–20:00, по записи</li>
+    </ul>
+    <a class="cta-map__btn" href="https://yandex.ru/maps/?rtext=~55.036943%2C82.916333&amp;rtt=auto" target="_blank" rel="noopener">Построить маршрут</a>
+  </div>
+</div>
 </div>
 </div>
 </section>
@@ -974,6 +1003,9 @@ function handleForm(e){
   document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden')leave(); });
   window.addEventListener('pagehide',leave);
 })();
+
+/* ===== КЛИК «ПОСТРОИТЬ МАРШРУТ» ===== */
+(function(){var a=document.querySelector('.cta-map__btn');if(a)a.addEventListener('click',function(){try{ym(113765465,'reachGoal','route_click');}catch(e){}});})();
 
 /* ===== ПОКАЗ ФОТО «ДО И ПОСЛЕ» ПО КЛИКУ ===== */
 (function(){
